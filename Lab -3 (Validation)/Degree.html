@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Degree</title>
+</head>
+<body>
+    <form onsubmit="return validate()">
+
+		<input type="checkbox" name="checkbox" id="SSC">
+		<label> SSC</label>
+		<input type="checkbox" name="checkbox" id="HSC">
+		<label> HSC </label>
+		<input type="checkbox" name="checkbox" id="BSc">
+		<label>BSc</label> <br>
+
+        <input type="submit" name="submit" id="submit" value="submit" />
+        <p id="msg"></p>
+    </form>
+
+    <script>
+        function validate()
+        {
+            if (document.getElementById('SSC').checked)
+            {
+                return true;
+            }
+            else if (document.getElementById('HSC').checked)
+            {
+                return true;
+            }
+            else if (document.getElementById('BSc').checked)
+            {
+                return true;
+            }
+            else 
+            {
+                document.getElementById('msg').innerHTML="Choose at least one"
+                msg.style.color = 'red';
+                return false;
+
+            }
+
+        }
+    </script>
+
+
+</body>
+</html>

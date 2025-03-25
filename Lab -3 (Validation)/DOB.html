@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title> Date Of Birth</title>
+</head>
+<body>
+    <form onsubmit="return validate()">
+        <h2>Date of Birth</h2>
+        <input type="date" name="date" value="date" id="date"> <br>
+        <input type="submit" name="submit" id="submit" value="submit" />
+        <p id="msg"></p>
+
+   
+
+    </form>
+
+    <script>
+
+        function validate()
+        {
+            let date= document.getElementById("date").value;
+           if(date==="")
+           {
+            document.getElementById("msg").innerHTML="Choose date of Birth";
+            msg.style.color='red';
+            return false;
+
+           }
+        }
+
+    </script>
+
+</body>
+</html>

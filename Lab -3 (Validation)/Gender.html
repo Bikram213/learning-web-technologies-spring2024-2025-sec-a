@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gender</title>
+</head>
+<body>
+    <form onsubmit="return validate()">
+        <input type="radio" name="Gender" value="male" id="male"> 
+        <label> Male </label>
+
+        <input type="radio" name="Gender" value="female" id="female"> 
+        <label> Female </label>
+
+        <input type="radio" name="Gender" value="other" id="other"> 
+        <label> Others </label>
+
+        <input type="submit" name="submit" id="submit" value="submit" />
+
+
+        <p id="msg"></p>
+    </form>
+
+    <script>
+        function validate() 
+        {
+            if (document.getElementById('male').checked)
+            {
+                return true;
+            }
+            else if (document.getElementById('female').checked)
+            {
+                return true;
+            }
+            else if (document.getElementById('other').checked)
+            {
+                return true;
+            }
+            else 
+            {
+                document.getElementById('msg').innerHTML="Choose Gender"
+                msg.style.color = 'red';
+                return false;
+
+            }
+        }
+    </script>
+</body>
+</html>

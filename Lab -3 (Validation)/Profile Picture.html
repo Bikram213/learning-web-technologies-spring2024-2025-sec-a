@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Profile Picture</title>
+</head>
+<body>
+    <form onsubmit="return validate()">
+        <label>User Id</label>
+		<input type="text" name="uId" id="uId"> <br>
+        <label>Image </label>
+		<input type="file" name="file" id="img"> <br>
+        <input type="submit" name="submit" id="submit" value="submit" />
+        <p id="msg"></p>
+    </form>
+
+    <script>
+        function validate()
+        {
+            let uId=document.getElementById("uId").value;
+            let img=document.getElementById("img").value;
+
+            if(uId=="")
+            {
+                document.getElementById("msg").innerHTML="UserId should not be empty";
+                msg.style.color = 'red';
+                return false;
+
+            }
+
+            if(uId<0){
+                document.getElementById("msg").innerHTML="User Id should be positive number";
+                msg.style.color = 'red';
+                return false;
+            }
+
+            if(img=="")
+            {
+                document.getElementById("msg").innerHTML="Picture Can not be empty";
+                msg.style.color = 'red';
+                return false;
+            }
+
+            return true;
+
+            
+
+        }
+    </script>
+
+
+</body>
+</html>
