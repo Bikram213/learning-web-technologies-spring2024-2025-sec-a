@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Email</title>
+</head>
+<body>
+
+	<form onsubmit="return validate()">
+        <label>Email </label> <br>
+        <input type="text" name="email" id="email">
+        <input type="submit" name="submit" id="submit" value="submit" />
+        <p id="msg"></p>
+    </form>
+
+	<script>
+        function validate() 
+        {
+            let email = document.getElementById('email').value.trim();
+            let msg = document.getElementById('msg');
+            let at= false;
+            let dot= false;
+
+            if (email === "") 
+            {
+                msg.innerHTML = "Email cannot be empty";
+                msg.style.color = 'red';
+                return false;
+            }
+            for (let i = 0; i < email.length; i++) 
+            {
+                let char = email[i];
+
+                if (char === '@') 
+                {
+                    at= true;
+                }
+
+                if (char === '.') 
+                {
+                    dot= true;
+                }
+            }
+
+            if (!at || !dot) 
+            {
+                msg.innerHTML = "Email must contain both '@' and '.'";
+                msg.style.color = 'red';
+                return false;
+            }
+
+            return true; 
+        }
+    </script>
+
+</body>
+</html>

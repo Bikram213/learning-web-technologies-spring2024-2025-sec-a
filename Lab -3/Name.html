@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Name</title>
+</head>
+<body>
+    <form onsubmit="return validate()">
+        <label>Name </label> <br>
+        <input type="text" name="name" id="name">
+        <input type="submit" name="submit" id="submit" value="submit" />
+        <p id="nmsg"></p>
+    </form>
+
+    <script>
+        function validate() 
+        {
+            let name = document.getElementById('name').value.trim();
+            let nmsg = document.getElementById('nmsg');
+
+            if (name === "") 
+            {
+                nmsg.innerHTML = "Please type name first!";
+                nmsg.style.color = 'red';
+                return false;
+            }
+
+            if (!((name[0] >= 'A' && name[0] <= 'Z') || (name[0] >= 'a' && name[0] <= 'z'))) 
+            {
+                nmsg.innerHTML = "Name must start with a letter!";
+                nmsg.style.color = 'red';
+                return false;
+            }
+            //only character
+
+            for (let i = 0; i < name.length; i++) 
+            {
+                let char = name[i];
+                if (!((char >= 'A' && char <= 'Z') || (char >= 'a' && char <= 'z') || char === '.' || char === '-'))
+                 {
+                    nmsg.innerHTML = "Name can only contain letters, dots, and dashes!";
+                    nmsg.style.color = 'red';
+                    return false;
+                }
+            }
+
+
+
+            let words = name.split(/\s+/);
+            if (words.length < 2) 
+            {
+                nmsg.innerHTML = "Please enter at least two words!";
+                nmsg.style.color = 'red';
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+</html>
