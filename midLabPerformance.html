@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      padding-top: 50px;
+    }
+    .calculator {
+      border: 2px solid black;
+      border-radius: 10px;
+      padding: 20px;
+      width: 260px;
+      background-color: rgba(162, 146, 146, 0.874);
+    }
+    .display {
+      height: 50px;
+      margin-bottom: 15px;
+      background: white;
+      font-size: 24px;
+      padding: 10px;
+      text-align: right;
+      border: 1px solid #ddcbcb;
+      border-radius: 5px;
+    }
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+    .btn {
+      padding: 15px;
+      font-size: 18px;
+      border: none;
+      background-color: #423d3d;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+    .btn:hover {
+      background-color: #d0d0d0;
+      color: black;
+    }
+  </style>
+</head>
+<body>
+
+<div id="calculator" class="calculator"></div>
+
+<script>
+  const calculator = document.getElementById('calculator');
+
+  const display = document.createElement('div');
+  display.className = 'display';
+  display.textContent = '';
+  calculator.appendChild(display);
+
+  const buttonValues = [
+    '7', '8', '9', '/',
+    '4', '5', '6', '*',
+    '1', '2', '3', '-',
+    '%', '0', '=', '+',
+    'C'
+  ];
+
+  const buttonsContainer = document.createElement('div');
+  buttonsContainer.className = 'buttons';
+
+  buttonValues.forEach(value => {
+    const button = document.createElement('button');
+    button.className = 'btn';
+    button.textContent = value;
+    button.addEventListener('click', () => handleButtonClick(value));
+    buttonsContainer.appendChild(button);
+  });
+
+  calculator.appendChild(buttonsContainer);
+
+  let currentInput = '';
+
+  function handleButtonClick(value) {
+    if (value === 'C') {
+      currentInput = '';
+      display.textContent = '';
+    } else if (value === '=') {
+      try {
+        const result = eval(currentInput);
+        display.textContent = result;
+        currentInput = result.toString();
+      } catch (e) {
+        display.textContent = 'Error';
+        currentInput = '';
+      }
+    } else if (value === '%') {
+      try {
+        currentInput = eval(currentInput) / 100 + '';
+        display.textContent = currentInput;
+      } catch (e) {
+        display.textContent = 'Error';
+        currentInput = '';
+      }
+    } else {
+      currentInput += value;
+      display.textContent = currentInput;
+    }
+  }
+</script>
+
+</body>
+</html>
